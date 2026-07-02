@@ -50,6 +50,12 @@ STYLE
 - Pick a deck-styles variant deliberately per the framework's variation rule and state which one and why.
 - Don't deviate from the brand-core palette/fonts/logo regardless of style choice.
 
+IF ANY FIELD ABOVE IS BLANK OR UNCLEAR
+Ask before proceeding — don't guess or invent client details, pricing, scope, or anything else to
+fill a gap. This is different from a field explicitly marked [TBC] — that's a deliberate placeholder
+and it's fine to carry it into the deck as-is. An unanswered field means "ask"; an explicit [TBC]
+means "leave it marked pending in the output."
+
 Before showing the result: run the mandatory Quality Checkpoint (render, visual QA for shape/arrow
 overlap, text overflow, colour drift, spacing) and confirm it passed.
 ```
