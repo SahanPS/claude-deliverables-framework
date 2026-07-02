@@ -86,7 +86,8 @@ mkdir -p private/skills
 | Path | Purpose |
 |---|---|
 | `skills/` | Public, generic skill definitions — safe to open-source |
-| `private/` | **Gitignored.** Your real firm assets and conventions |
+| `prompts/` | Reusable prompt templates for common deliverable requests (e.g. a proposal deck) — mirrors the `skills/` + `private/` overlay pattern |
+| `private/` | **Gitignored.** Your real firm assets, conventions, and real prompt templates |
 | `scripts/deploy.sh` | Merges `skills/` + `private/` → `~/.claude/skills/` |
 | `scripts/package.sh` | Zips each merged skill for claude.ai upload |
 | `scripts/validate.sh` | Lints SKILL.md frontmatter, checks asset refs, blocks private content from being committed |

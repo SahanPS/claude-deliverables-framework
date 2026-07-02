@@ -4,10 +4,11 @@ This directory is gitignored. It never leaves your machine and is never pushed t
 
 ## The pattern
 
-`private/` mirrors the exact folder structure of `skills/`. Where `skills/` ships generic,
-placeholder content (so the framework is safe to open-source), `private/` holds your firm's
-real assets: real logos, real rate cards, real client-facing conventions, real style examples
-drawn from actual past work.
+`private/` mirrors the exact folder structure of `skills/` **and** `prompts/`. Where the public
+tree ships generic, placeholder content (so the framework is safe to open-source), `private/` holds
+your firm's real assets: real logos, real rate cards, real client-facing conventions, real style
+examples drawn from actual past work, and real reusable prompt templates (with real signatory
+names, real default content shapes) in `private/prompts/`.
 
 ```
 skills/brand-core/assets/logo-placeholder.svg     <-- public, generic
