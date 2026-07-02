@@ -83,3 +83,10 @@ in a final deliverable.
 Always render through `scripts/render-mermaid.sh <input.mmd> <output.svg|png>` — see that script for
 usage. Never hand-embed raw Mermaid syntax into a deck or document; always render to SVG/PNG first
 and embed the image, since not every viewer renders Mermaid natively.
+
+**Embedding in a PowerPoint deck — always render to PNG, not SVG.** Common deck-building libraries
+(e.g. pptxgenjs) do not properly rasterize SVG on `addImage()` — they can silently write a file with
+a `.png` extension that's actually unconverted SVG bytes, which renders blank in any viewer that
+doesn't specifically handle the DrawingML SVG extension (older PowerPoint, LibreOffice, Keynote, most
+converters). Render Mermaid output to `.png` for any deck embed. SVG output is safe for Word/document
+embeds and for further vector editing, but never for a deck.

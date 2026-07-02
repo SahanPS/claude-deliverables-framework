@@ -32,8 +32,10 @@ topology* (what talks to what, not in what order), it's native shapes + icons.
 
 - **Mermaid diagrams**: always render via `scripts/render-mermaid.sh` before embedding — never embed
   raw Mermaid syntax into a final deliverable. The script applies the firm's themed colours
-  automatically. See `references/mermaid-conventions.md` for syntax conventions, theming detail, and
-  the flowchart/sequence/state-specific rules.
+  automatically. **For a PowerPoint deck, render to PNG, not SVG** — deck-building libraries commonly
+  don't rasterize SVG correctly on embed, producing a broken image in non-Microsoft viewers; SVG is
+  fine for Word/document embeds. See `references/mermaid-conventions.md` for syntax conventions,
+  theming detail, and the flowchart/sequence/state-specific rules.
 - **Architecture diagrams**: build as SVG (for documents) or native shapes (for decks), using icons
   from `assets/icons/`, recoloured to the active brand palette (`brand-core`). Convert SVG to PNG at
   high resolution (1600px+ wide) for crisp embedding in Word/PowerPoint.
