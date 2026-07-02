@@ -56,6 +56,10 @@ respective skill for each, and lead with the SOW.
 
 ## Common Mistakes to Avoid
 
+- **Don't skip brand-core's Quality Checkpoint.** Every SOW must be rendered to PDF and visually
+  inspected — tables, embedded diagrams, page breaks, borders — before it's reported as ready. See
+  `brand-core/SKILL.md`'s "Quality Checkpoint (Mandatory)" section.
+
 - **Don't force every engagement into the same format** just because it's the only one you've used
   before — check whether the client, engagement type, or region calls for a different format from
   the private overlay first.

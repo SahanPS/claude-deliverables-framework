@@ -56,6 +56,10 @@ plain labelled boxes for anything bespoke or client-specific that has no generic
 
 ## Common Mistakes to Avoid
 
+- **Don't skip brand-core's Quality Checkpoint.** Every diagram, once embedded, must be rendered
+  and visually inspected for overlap between connectors/arrows and other elements before it's
+  reported as ready — see `brand-core/SKILL.md`'s "Quality Checkpoint (Mandatory)" section.
+
 - **Don't skip the icon index check.** A diagram that mixes "proper icon" and "improvised box" styles
   for the same category of thing (e.g. one cloud provider has an icon, another is just a rectangle)
   looks unfinished.

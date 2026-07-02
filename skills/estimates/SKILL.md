@@ -90,6 +90,10 @@ mix to the specific engagement's scope and complexity. Your firm's real, battle-
 
 ## Common Mistakes to Avoid
 
+- **Don't skip brand-core's Quality Checkpoint.** Every workbook must be opened and read back
+  (column widths, frozen panes, fill colours, formula errors) before it's reported as ready — see
+  `brand-core/SKILL.md`'s "Quality Checkpoint (Mandatory)" section.
+
 - **Don't hardcode rates in horizon sheets** — always link to the Rates sheet with a cross-sheet
   formula (green, per the colour convention).
 - **Don't price Phase 0 as part of the fixed-price build** — it's a separate commitment that

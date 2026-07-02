@@ -80,6 +80,10 @@ Each file in `references/` follows the same structure so they're easy to compare
 
 ## Common Mistakes to Avoid
 
+- **Don't skip brand-core's Quality Checkpoint.** Every deck must be rendered and visually
+  inspected for shape/arrow overlap, text overflow, colour drift, and spacing before it's reported
+  as ready — see `brand-core/SKILL.md`'s "Quality Checkpoint (Mandatory)" section.
+
 - **Don't silently default to the first style in the table every time.** That recreates the exact
   sameness problem this skill exists to solve.
 - **Don't mix layout grammars within one deck** (e.g. Editorial's generous margins on some slides,

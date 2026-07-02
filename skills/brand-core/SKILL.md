@@ -131,6 +131,35 @@ that uses it:
 This convention should never be abandoned even when a workbook's visual style otherwise varies —
 finance/procurement reviewers on the client side rely on it to audit a model quickly.
 
+## Quality Checkpoint (Mandatory — Every Deliverable, No Exceptions)
+
+**Never tell the user a deliverable is ready without running this checkpoint first.** This applies
+to every PowerPoint, Word, or Excel file this framework produces or edits — not just decks, and not
+just on request. Generating the file is not the same as finishing the task.
+
+1. **Render it.** Convert to an inspectable form before judging it — a PDF/JPEG render for
+   pptx/docx (see the base `pptx`/`docx` skills' conversion tooling), or an actual open/read-back
+   for xlsx. Never declare a deliverable ready from reading the source code/XML alone — defects
+   that are invisible in markup are often obvious once rendered.
+2. **Inspect with fresh eyes.** Use a subagent for the visual pass where practical — the model that
+   just wrote the file is prone to seeing what it intended rather than what's actually on the page.
+3. **Check specifically for:**
+   - **Shape overlap** — do any shapes overlap each other, or overlap text?
+   - **Arrow/connector overlap** — do arrows cross other elements awkwardly, or fail to cleanly
+     connect to what they're pointing at?
+   - **Text overflow** — is any text cut off, spilling past its container, or wrapping badly?
+   - **Colour correctness** — does everything draw from the brand palette above, with no stray tool
+     defaults or un-recoloured leftovers?
+   - **Borders & spacing** — inconsistent gaps, missing margins, misaligned columns/rows,
+     elements crammed too close together (or too far apart) compared to the rest of the deliverable.
+   - Leftover placeholder text (`[insert]`, `TODO`, `Lorem ipsum`, etc.)
+4. **Fix what you find, then re-check only the affected parts** — don't loop indefinitely chasing
+   sub-pixel positioning, but don't skip a real, visible defect either.
+5. **Only after this passes** should the deliverable be reported as ready to the user.
+
+This is process infrastructure, not an optional nicety — treat it as a hard gate on every
+deliverable this framework produces, regardless of format or how simple the request seemed.
+
 ## Checklist Before Generating Anything Branded
 
 - [ ] Correct logo variant selected for the background
@@ -141,3 +170,4 @@ finance/procurement reviewers on the client side rely on it to audit a model qui
 - [ ] If it's a spreadsheet: financial model colour convention applied
 - [ ] Everything else (layout, density, diagram style, prose voice) has been handed off to the
       relevant style-choice skill — don't make style decisions here
+- [ ] The Quality Checkpoint above has been run and passed — this is not optional
