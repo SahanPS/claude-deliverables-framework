@@ -37,9 +37,14 @@ client conventions, real style examples) live in a `private/` directory that mir
 structure and is **gitignored** — it never leaves your machine.
 
 ```
-skills/brand-core/assets/logo-placeholder.svg      <- public, generic, in this repo
-private/skills/brand-core/assets/logo-placeholder.svg  <- your real logo, gitignored, same filename
+skills/brand-core/assets/logo-dark.svg           <- public, generic placeholder, in this repo
+private/skills/brand-core/assets/logo-dark.svg   <- your real logo, gitignored, same filename
 ```
+
+The merge is file-level, not all-or-nothing: a private file with the same name as a public one wins
+outright (e.g. a real `mark.svg` motif replaces the generic placeholder shape); a private file with a
+*new* name is added alongside the public ones (e.g. a real named style variant like `style-classic.md`
+sits next to the generic `style-editorial.md` placeholder in the deployed skill, and both are usable).
 
 `scripts/deploy.sh` deep-merges `private/` over `skills/` into `~/.claude/skills/`, with `private/`
 content winning on any conflict. The result on your machine is a fully firm-branded skill set; the
@@ -86,6 +91,16 @@ mkdir -p private/skills
 | `scripts/package.sh` | Zips each merged skill for claude.ai upload |
 | `scripts/validate.sh` | Lints SKILL.md frontmatter, checks asset refs, blocks private content from being committed |
 | `examples/` | Sanitised example outputs (rendered slide PNGs, etc.) |
+| `dist/` | `package.sh` output — zipped skills for claude.ai upload. Gitignored, regenerated on demand |
+
+## Why this actually stops the sameness problem
+
+The most important file in this repo is [`skills/deck-styles/SKILL.md`](skills/deck-styles/SKILL.md).
+It doesn't just list style options — it instructs Claude to (a) pick a named variant deliberately
+based on audience and content, or ask; (b) never pick the same variant twice in a row in one
+conversation unless explicitly asked to match; (c) say out loud which one it picked and why. That
+last rule is what makes the variation legible instead of accidental — you can tell at a glance
+whether the framework is actually doing its job.
 
 ## License
 
