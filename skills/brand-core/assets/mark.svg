@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- PLACEHOLDER BRAND MOTIF — a generic abstract mark standing in for
+       whatever recurring visual motif your firm uses (an icon, a mascot,
+       a geometric device). Replace via the private overlay
+       (private/skills/brand-core/assets/mark.svg) with your firm's real
+       motif, keeping this exact filename. -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#2563EB" stroke-width="6"/>
+  <path d="M60 130 Q100 40 140 130" fill="none" stroke="#2563EB" stroke-width="6" stroke-linecap="round"/>
+</svg>
