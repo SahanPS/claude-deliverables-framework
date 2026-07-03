@@ -15,6 +15,33 @@ concept you need, use it. Don't invent an ad hoc icon for something already in t
 don't draw a generic box when a proper icon exists — the icon library is what makes diagrams look
 considered rather than improvised.
 
+## Step 1.5 — Generating a Missing Icon or Illustration (fal.ai)
+
+If no icon exists for a concept you need, and a plain labelled box genuinely isn't good enough (e.g.
+a cover-slide hero illustration, a bespoke concept icon, a custom vector motif), generate one via
+`scripts/generate-fal-asset.py` rather than improvising a rough shape by hand.
+
+**Requires `FAL_KEY` in the environment** — get one from https://fal.ai/dashboard/keys and export it
+in your shell (`export FAL_KEY=...`). Never paste the key into a prompt or hardcode it in any file.
+
+| Need | Command |
+|---|---|
+| A true SVG icon/vector from a text prompt | `scripts/generate-fal-asset.py --mode text-to-vector --prompt "..." --out icon.svg --colors "#HEX1,#HEX2"` |
+| A raster hero image/illustration from a text prompt | `scripts/generate-fal-asset.py --mode text-to-image --prompt "..." --out hero.png --style digital_illustration` |
+| Converting an existing raster (e.g. an uploaded logo) into a true SVG | `scripts/generate-fal-asset.py --mode vectorize --image-url <public-url> --out result.svg` |
+
+Pass `--colors` with the active `brand-core` palette hex values so generated assets land close to
+on-brand from the start — still run them through the Quality Checkpoint afterward, since generated
+output needs the same visual QA as anything else.
+
+`--mode text-to-image --style vector_illustration` produces a *raster* styled to look like a vector
+— it is not an actual SVG. If you need a real, editable vector file, use `--mode text-to-vector`
+instead.
+
+Once a generated asset earns its place as a recurring element, add it to `assets/icons/` (in the
+appropriate category folder) and update `assets/icons/index.md` — don't regenerate the same icon
+from scratch on every future use.
+
 ## Step 2 — Pick the Right Tool for the Diagram Type
 
 | You're drawing... | Use |
@@ -71,6 +98,10 @@ plain labelled boxes for anything bespoke or client-specific that has no generic
   are an immediate visual tell that a diagram wasn't finished — always apply the brand palette.
 - **Don't let a diagram require the surrounding prose to make sense.** If you have to explain what a
   diagram means before showing it, the diagram itself needs another labelling pass.
+- **Don't reach for `generate-fal-asset.py` before checking the icon index.** Generation is the
+  fallback for a genuine gap, not the default path — reuse before you generate.
+- **Don't ask the user for their fal.ai API key in chat.** It must be set as an environment
+  variable (`FAL_KEY`) on their machine; never handle the raw key value directly.
 
 ## Bundled Files
 
@@ -79,3 +110,4 @@ plain labelled boxes for anything bespoke or client-specific that has no generic
 | `assets/icons/index.md` | Always, before drawing anything |
 | `references/mermaid-conventions.md` | Any Mermaid diagram (flow/sequence/state/gantt) |
 | `scripts/render-mermaid.sh` | Rendering any Mermaid diagram to SVG/PNG |
+| `scripts/generate-fal-asset.py` | Generating a missing icon, vector, or illustration when nothing suitable exists in the icon library |

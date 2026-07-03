@@ -4,6 +4,10 @@ private/*
 !private/README.md
 *-private/
 
+# API keys / secrets — never commit these (e.g. FAL_KEY for solution-diagrams' fal.ai integration)
+.env
+.env.*
+
 # OS / editor noise
 .DS_Store
 *.swp
