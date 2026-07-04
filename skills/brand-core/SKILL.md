@@ -152,13 +152,43 @@ just on request. Generating the file is not the same as finishing the task.
      defaults or un-recoloured leftovers?
    - **Borders & spacing** — inconsistent gaps, missing margins, misaligned columns/rows,
      elements crammed too close together (or too far apart) compared to the rest of the deliverable.
+   - **Image distortion — measure it, don't eyeball it.** For every embedded picture, compare the
+     image's native pixel aspect ratio to the aspect ratio of the frame it's placed in. If they
+     differ by more than a few percent, the image is being stretched. This check is easy to miss
+     visually (a render can look "fine" at a glance while the image is meaningfully distorted) —
+     confirm the actual numbers:
+     ```python
+     from PIL import Image
+     im = Image.open("path/to/image.png")
+     native_ratio = im.size[0] / im.size[1]
+     # compare against the frame's width/height (or cx/cy in EMUs) from the placement —
+     # they should match, or the image should be cropped-to-fill, not stretched-to-fill
+     ```
+     Never stretch an image to fit a frame with a different aspect ratio. Either size the frame to
+     match the image's native ratio, or crop-to-fill (fill the frame while preserving ratio, cropping
+     the overflow) — never distort.
+   - **Missing real assets substituted silently** — if a real logo, photo, or other specific image
+     asset should appear (a client's logo, a named product's icon) and isn't available, that's not
+     licence to quietly fall back to a plain text label or generic shape instead. Either use the
+     real asset, ask the user for it, or mark the gap visibly (e.g. a labelled placeholder box) —
+     never let a missing-asset situation look like a deliberate design choice.
+   - **Shape variety across the deliverable** — a deck shouldn't use the exact same card/shape
+     treatment for every single content-grid slide. Repeating one rectangle-with-border-bar pattern
+     verbatim across every slide is a form of the sameness problem this framework exists to prevent,
+     just within one deliverable instead of across deliverables. Vary shape language between slides
+     (different card treatments, icon-in-shape combinations, layout grammar) the way the chosen
+     style's reference file describes — a style variant is a palette of moves, not a single
+     reusable template to stamp out repeatedly.
    - Leftover placeholder text (`[insert]`, `TODO`, `Lorem ipsum`, etc.)
 4. **Fix what you find, then re-check only the affected parts** — don't loop indefinitely chasing
    sub-pixel positioning, but don't skip a real, visible defect either.
 5. **Only after this passes** should the deliverable be reported as ready to the user.
 
 This is process infrastructure, not an optional nicety — treat it as a hard gate on every
-deliverable this framework produces, regardless of format or how simple the request seemed.
+deliverable this framework produces, regardless of format or how simple the request seemed. A
+checkpoint that's run superficially (glancing at a thumbnail rather than actually measuring and
+inspecting) provides no real protection — this list exists because every item on it has actually
+failed in real output from this framework at least once.
 
 ## Checklist Before Generating Anything Branded
 
@@ -170,4 +200,7 @@ deliverable this framework produces, regardless of format or how simple the requ
 - [ ] If it's a spreadsheet: financial model colour convention applied
 - [ ] Everything else (layout, density, diagram style, prose voice) has been handed off to the
       relevant style-choice skill — don't make style decisions here
+- [ ] No image is stretched — native aspect ratio checked against frame aspect ratio for every picture
+- [ ] No missing real asset (logo, photo) was silently swapped for a plain shape or text label without asking or flagging it
+- [ ] Shape/card treatment varies across the deliverable's slides — not one template stamped out repeatedly
 - [ ] The Quality Checkpoint above has been run and passed — this is not optional

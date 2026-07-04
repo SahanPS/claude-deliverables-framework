@@ -81,6 +81,18 @@ Most solution architecture diagrams follow a left-to-right (or top-to-bottom) st
 Use the icon library for recognisable systems (cloud platforms, databases, identity providers) and
 plain labelled boxes for anything bespoke or client-specific that has no generic icon.
 
+**Every column/swimlane must get the same header treatment.** If most columns have a coloured
+header bar with a label, every column needs one — including a column that represents an external
+system (e.g. a client's existing finance/ERP system) rather than something being proposed. A column
+that looks structurally different from its neighbours reads as unfinished, even if the reason for
+the difference (it's "outside" the proposed platform) made sense while building it.
+
+**Leave real clearance from the footer.** A diagram that runs a full-width band (e.g. a
+cross-cutting "security & operations" footer within the diagram itself) needs enough bottom margin
+that it doesn't collide with the slide's own footer logo, tagline, or page number. Check this
+specifically when a diagram has its own internal footer-style element — it's an easy collision to
+introduce and an easy one to miss without measuring the actual vertical space.
+
 ## Common Mistakes to Avoid
 
 - **Don't skip brand-core's Quality Checkpoint.** Every diagram, once embedded, must be rendered
